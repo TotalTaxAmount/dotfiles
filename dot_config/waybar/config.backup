@@ -1,0 +1,145 @@
+{
+    "gtk-layer-shell": true,
+	"layer": "top",
+	"modules-left": ["network", "custom/storage", "memory","cpu", "temperature", "custom/spotify","tray"],
+	"modules-center": ["wlr/workspaces"],
+	"modules-right": ["bluetooth", "pulseaudio", "custom/weather", "clock", "battery", "custom/power"],
+	
+	"pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 0.75,
+        "format": "{icon} {volume}%",
+		"format-muted": "&#x2716; {volume}%",
+        "format-icons": {
+            "headphone": "&#x1F3A7;",
+		    "default": "&#x1F50A;"
+        },
+        "on-click":"amixer set Master toggle"
+	},
+    "wlr/workspaces": {
+        "sort-by-name": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+    "hyprland/window": {
+        "format": "{}",
+    },
+
+	"network": {
+		"tooltip": false,
+        "format": "{icon} {essid}",
+        "format-alt": "{icon} {ipaddr} - {signalStrength}%",
+        "format-alt-click": "click-left",
+        "format-icons": {
+            "wifi": "&#xF1EB;",
+            "ethernet": "&#xF6FF;",
+            "disconnected": "&#xF818;"
+        },
+        "on-click-right": "alacritty -e sudo nmtui"
+	},
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "&#xF2C7; {temperatureC}°C",
+        "format": "&#xF2C7; {temperatureC}°C",
+        "interval": 2
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "&#xF1E6; {capacity}%",
+        "format-plugged": "&#xF1E6; {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["&#xF579;", "&#xF57A;", "&#xF57B;", "&#xF57C;", "&#xF57D;", "&#xF57E;", "&#xF57F;", "&#xF57H;", "&#xF581;", "🔋&#xFE0E;"],
+    },
+    "tray": {
+	"icon-size":18,
+	"spacing": 10
+    },
+    "clock": {
+        "format": "{:&#x1F550; %I:%M %p}",
+	"format-alt": "{:&#x1F550; %I:%M %p - 📅&#xFE0E; %m/%d/%Y}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": "&#xF023;"
+        },
+        "tooltip": false
+    },
+    "cpu": {
+        "interval": 15,
+        "format": "&#xF2DB; {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": "&#xF0C9; {}%",
+        "format-alt": "&#xF0C9 ;{used}GiB/{total}GiB"
+        
+    },
+    "bluetooth": {
+        "format-alt": " status: {status}",
+        "format-on": "",
+        "format-off": "!",
+        "on-click-right": "blueman-manager",
+        "tooltip-format": " {status}"
+    },
+    "custom/bgchange": {
+	"format": "⟳",
+	"on-click": "exec ~/.config/waybar/modules/change.sh" 
+    },
+    "custom/spotify": {
+        "format": "{}  ",
+        "max-length": 60,
+        "interval": 30,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify/metadata.sh",
+        "on-click": "~/.config/waybar/modules/spotify/controls.sh",
+        "on-click-right": "~/.config/waybar/modules/spotify/controls.sh next",
+        "on-double-click": "~/.config/waybar/modules/spotify/controls.sh prev",
+        "signal": 5,
+        "smooth-scrolling-threshold": 1.0
+    },
+    "custom/weather": {
+	    "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-left",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+    "custom/storage": {
+        "format": "&#x1F5B4; {percentage}%",
+        "format-alt": "&#x1F5B4; {}iB/800GiB",
+        "format-alt-click": "click-left",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    "custom/power":{
+        "format": "⏻",
+        "on-click": ""
+    },
+    "custom/launcher": {
+        "format": "✎",
+        "on-click": "gamemoderwofi --show drun"
+    },
+    "custom/playerctl": {
+		"format": "🎝 {}",
+		"return-type": "json",
+		"max-length": 40,
+		"exec": "unbuffer $HOME/.local/lib/waybar/playerctl.sh 2> /dev/null",
+		"on-click": "playerctl play-pause",
+		"on-right-click": "sys-notif media",
+		"on-scroll-up": "playerctl position 3+",
+		"on-scroll-down": "playerctl position 3-"
+	}
+
+}

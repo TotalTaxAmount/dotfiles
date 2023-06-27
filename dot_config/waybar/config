@@ -1,0 +1,136 @@
+{
+    "height": 29,
+    "layer": "top",
+    "margin-top": 6,
+    "margin-left": 5,
+    "margin-bottom": 5,
+    "margin-right": 5,
+    "spacing": 5,
+    "modules-left": ["network", "disk", "memory", "cpu", "temperature", "tray"], 
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["bluetooth", "pulseaudio", "clock", "battery"],
+
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "all-outputs": true,
+      "format-icons": {
+        // "1": "",
+        // "2": "",
+        // "3": "",
+        // "4": "",
+        // "5": "",
+        // "6": "",
+        // "7": "",
+        // "8": "",
+        // "9": "",
+        // "10": "",
+      }
+    },
+
+    "hyprland/window": {
+        "format": " {} ",
+        "separate-outputs": true,
+    },
+
+    "clock": {
+        "interval": 30,
+        "format": " {:%I:%M %p}",
+        "format-alt": " {:%a %b %d}",
+    },
+
+    "bluetooth": {
+        "format-alt": " status: {status}",
+        "format-on": "",
+        "format-off": "!",
+        "on-click-right": "blueman-manager",
+        "tooltip-format": " {status}"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "cpu": {
+      "interval": 1,
+      "format": " {usage}%",
+      "max-length": 8,
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": " {used}G",
+        "format-alt":" {}%",
+    },
+
+    "disk": {
+        "interval": 1800,
+        "format": " {used}",
+    },
+
+    "battery": {
+        "interval": 60,
+        "tooltip": false,
+        "format": "{icon} {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-charging": "&#xF1E6; {capacity}%",
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "format-icons": ["", "", "", "", ""],
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "&#xF2C7; {temperatureC}°C",
+        "format": "&#xF2C7; {temperatureC}°C",
+        "interval": 2
+    },
+
+    "backlight": {
+        "device": "DP-1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+    },
+    
+    "network": {
+        "format-wifi": "直 {essid}",
+        "format-ethernet": " wired",
+        "format-alt": "直 {ipaddr} - {signalStrength}%",
+        "on-right-click": "alacritty -e nmtui",
+        "format-disconnected": "睊  Disconnected",
+    },
+
+    "custom/backup": {
+        "format": "",
+    },
+
+    "custom/pacman": {
+        "format": "{} ",
+        "interval": 1600,
+        "exec": "yay -Qqu | wc -l",
+        "on-click": "alacritty -e yay -Syu --noconfirm",
+        "signal": 8
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "婢 Muted",
+        "on-click": "amixer set Master toggle",
+        "on-right-click": "pavucontrol",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+    },
+
+    "custom/clear-ram": {
+        "format": "",
+        "on-click": "sh ~/.local/bin/clear-ram.sh"
+    }
+}
+
+// vim:ft=json
+
+

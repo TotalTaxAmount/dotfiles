@@ -1,0 +1,119 @@
+* {
+	border: none;
+	border-radius: 10px;
+        font-family: "Font Awesome 5 Pro Solid";
+	font-size: 15px;
+	min-height: 10px;
+	background-color: transparent;
+}
+
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+
+
+#window {
+	margin-top: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+        color: #33CCFE;
+}
+
+
+#workspaces button {
+        padding: 0 0 0 0;
+        background-color: #0f0b0b;
+        margin: 4px 3px 6px 4px;
+        color: #33CCFE;
+        min-width: 32px;
+
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+}
+
+#workspaces button.active {
+        padding: 0 0 0 0;
+        background-color: #0f0b0b;
+        margin: 4px 3px 6px 4px;
+        color: #33CCFE;
+        min-width: 32px;
+
+        border-top: 2px solid #33CCFE;
+        border-bottom: 2px solid #33CCFE;
+        border-left: 2px solid #33CCFE;
+        border-right: 2px solid #33CCFE;
+}
+
+#workspaces button:hover {
+        background-color: #33CCFE;
+        color: #000000;
+}
+
+#workspaces button.focused {
+        background-color: #bbccdd;
+        color: #323232;
+}
+
+#workspaces button.urgent {
+        background-color: #64727D;
+}
+
+
+#workspaces {
+        background-color: transparent;
+        transition: none;
+        color: #B5E8E0;
+}
+
+.modules-left > widget:first-child > #workspaces {
+        margin-left: 0;
+}
+
+.modules-right > widget:first-child > #workspaces {
+        margin-right: 0;
+}
+
+#network, 
+#bluetooth, 
+#pulseaudio, 
+#battery, 
+#backlight, 
+#clock,
+#memory, 
+#cpu,
+#tray,
+#temperature,
+#custom-launcher, 
+#custom-power,
+#custom-wallpaper,
+#custom-updates, 
+#custom-media,
+#custom-weather,
+#custom-storage,
+#custom-launcher, 
+#custom-spotify {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-radius: 10px;
+	transition: none;
+        
+        border-top: 2px solid #33CCFE;
+        border-bottom: 2px solid #33CCFE;
+        border-left: 2px solid #33CCFE;
+        border-right: 2px solid #33CCFE;
+	
+	color: #33CCFE;
+	background-color: #0f0b0b;
+	
+}
