@@ -2,7 +2,7 @@ export SWWW_TRANSITION_FPS=60
 export SWWW_TRANSITION_STEP=2
 
 # This controls (in seconds) when to switch to the next image
-INTERVAL=250
+INTERVAL=60
 swww init
 while true; do
 	find "/home/$USER/.config/swww/wallpapers/" \
